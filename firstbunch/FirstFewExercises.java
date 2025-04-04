@@ -5,6 +5,9 @@ public class FirstFewExercises {
         System.out.println("25°C is: "+ fahrenheit);
         double celsius = convertToCelsius(77.0);
         System.out.println("77°F is: " + celsius);
+        int number = 5;
+        System.out.println("Is " + number + " odd? " + isOdd(number));
+        System.out.println("Is " + number + " even? " + isEven(number));
     }
     
     public static double convertToFahrenheit(double howWarmCelsius) {
@@ -15,5 +18,17 @@ public class FirstFewExercises {
     public static double convertToCelsius(double howWarmFahrenheit) {
         double celsius = (howWarmFahrenheit - 32.0) * (5.0 / 9.0);
         return celsius;
+    }
+
+    public static boolean isOdd(int number) {
+        if (number % 2 == 1) {
+            return true;
+        } else return false;
+    }
+
+    public static boolean isEven(int number) {
+        if (number % 2 == 0) {
+            return true;
+        } else return false;
     }
 }
