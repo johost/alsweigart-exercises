@@ -1,0 +1,4 @@
+touch .gitignore
+echo "*.class" >> .gitignore
+echo "*.jar" >> .gitignore
+echo "out/" >> .gitignore

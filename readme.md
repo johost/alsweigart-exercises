@@ -1,0 +1,1 @@
+In this repository I practice exercises from the book "Python programming exercises, gently explained" (2022) (https://alsweigart.com/). I solve the exercises in java instead of python. Furthermore I do not use any LLM but only search engines or Stack Overflow.
