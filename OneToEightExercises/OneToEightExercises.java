@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FirstFewExercises {
+public class OneToEightExercises {
     public static void main(String[] args) {
         System.out.println("Hi, welcome!\nThe following lines show the output of the exercises.");
         double fahrenheit = convertToFahrenheit(25.0);
