@@ -10,6 +10,19 @@ public class FirstFewExercises {
         System.out.println("Is " + number + " even? " + isEven(number));
         int upTo = 35;
         printFizzBuzz(upTo);
+        System.out.println("");
+        int suffixNumber = 10;
+        ordinalSuffix(suffixNumber);
+        suffixNumber = 23;
+        ordinalSuffix(suffixNumber);
+        suffixNumber = 41;
+        ordinalSuffix(suffixNumber);
+        suffixNumber = 58;
+        ordinalSuffix(suffixNumber);
+        suffixNumber = -23;
+        ordinalSuffix(suffixNumber);
+        
+
     }
     
     public static double convertToFahrenheit(double howWarmCelsius) {
@@ -53,6 +66,49 @@ public class FirstFewExercises {
             if (i % 5 == 0) {
                 System.out.print("Buzz "); 
             } else System.out.print(i + " ");
+        }
+    }
+
+    public static void ordinalSuffix(int suffixNumber) {
+        /*
+         * 0th
+         * 1st
+         * 2nd
+         * 3rd
+         * 4th
+         * 10th
+         * 101st
+         * gotcha negative numbers
+         * 
+         * if (number endet auf 0 ) {
+         *  print number + "th"}
+         * else if (number endet auf 1) {
+         *  print number + "st"}
+         * else if (number endet auf 2) {
+         *  print number + "nd"}
+         * else if (number endet auf 3) {
+         *  print number + "rd"}
+         * else if (number ende >= 4 && number ende <= 9) {
+         *  print number + "th"}
+         */
+        if (Math.abs(suffixNumber) % 10 == 0) {
+            System.out.println(suffixNumber + "th");
+        }
+        
+        else if (Math.abs(suffixNumber) % 10 == 1) {
+            System.out.println(suffixNumber + "st");
+        }
+
+        else if (Math.abs(suffixNumber) % 10 == 2) {
+            System.out.println(suffixNumber + "2n");
+        }
+
+        else if (Math.abs(suffixNumber) % 10 == 3) {
+            System.out.println(suffixNumber + "rd");
+        }
+
+        else if (Math.abs(suffixNumber) % 10 >= 4 && Math.abs(suffixNumber) % 10 <= 9) {
+            System.out.println(suffixNumber + "th");
         }
     }
 }
