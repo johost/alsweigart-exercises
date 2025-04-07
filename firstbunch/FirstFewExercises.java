@@ -1,3 +1,9 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class FirstFewExercises {
     public static void main(String[] args) {
         System.out.println("Hi, welcome!\nThe following lines show the output of the exercises.");
@@ -21,6 +27,10 @@ public class FirstFewExercises {
         ordinalSuffix(suffixNumber);
         suffixNumber = -23;
         ordinalSuffix(suffixNumber);
+        printASCIITable();
+        writeToFile("greet.txt", "Hello!\n");
+        appendToFile("greet.txt", "Goodbye!");
+        readFromFile("greet.txt");
         
 
     }
@@ -70,27 +80,6 @@ public class FirstFewExercises {
     }
 
     public static void ordinalSuffix(int suffixNumber) {
-        /*
-         * 0th
-         * 1st
-         * 2nd
-         * 3rd
-         * 4th
-         * 10th
-         * 101st
-         * gotcha negative numbers
-         * 
-         * if (number endet auf 0 ) {
-         *  print number + "th"}
-         * else if (number endet auf 1) {
-         *  print number + "st"}
-         * else if (number endet auf 2) {
-         *  print number + "nd"}
-         * else if (number endet auf 3) {
-         *  print number + "rd"}
-         * else if (number ende >= 4 && number ende <= 9) {
-         *  print number + "th"}
-         */
         if (Math.abs(suffixNumber) % 10 == 0) {
             System.out.println(suffixNumber + "th");
         }
@@ -111,4 +100,66 @@ public class FirstFewExercises {
             System.out.println(suffixNumber + "th");
         }
     }
+
+    public static void printASCIITable() {
+        /*
+         * schleife for
+         *  konvertiere integer i zu String und zeige als ASCII char an
+         */
+        for (int i = 32; i <= 126; i++) {
+            char ch = (char) i;
+            System.out.println(i + " " + ch); 
+        }
+    }
+
+    public static void writeToFile(String pathName, String text) {
+        try {
+            File file = new File(pathName);
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error accoured.");
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter myWriter = new FileWriter(pathName);
+            myWriter.write(text);
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public static void appendToFile(String pathName, String appendText) {
+        try {
+            FileWriter myWriter = new FileWriter(pathName,true);
+            myWriter.write(appendText);
+            myWriter.close();
+            System.out.println("Appended to file.");
+        } catch (IOException e) {
+            System.err.println("IO Exception " + e.getMessage());
+        }
+    }
+
+    public static void readFromFile(String pathName) {
+        try {
+            File file = new File(pathName);
+            Scanner myReader = new Scanner (file);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occured.");
+            e.printStackTrace();
+        }
+    }
+
+    
 }
