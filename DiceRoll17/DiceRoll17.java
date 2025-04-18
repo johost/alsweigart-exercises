@@ -1,16 +1,16 @@
 public class DiceRoll17 {
     public static void main(String[] args) {
         
-        int dice1 = rollDice();
-        int dice2 = rollDice();
-        int diceSum = dice1 + dice2;
-        System.out.print(dice1 + " + " + dice2 + " = " + diceSum + "\n");
+        System.out.println(rollDice(3));
         
     }
 
-    public static int rollDice() {
-        int dice = ((int)(Math.random() * 6) + 1);
-        return dice;
-
+    public static int rollDice(int numberOfDice) {
+        int diceSum = 0;
+        for (int i = 1; i <= numberOfDice; i++) {
+            int diceRollRandom = ((int)(Math.random() * 6) + 1);
+            diceSum = diceSum + diceRollRandom;
+        }
+        return diceSum;
     }
 }
