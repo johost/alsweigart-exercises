@@ -1,6 +1,11 @@
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+
 public class PasswordGenerator19 {
     public static void main(String[] args) {
-        System.out.println(generatePassword(10));
+        System.out.println(generateSuperPassword(16));
 
     }
 
@@ -10,19 +15,6 @@ public class PasswordGenerator19 {
             password = password + randomLetter();
         }
         return password;
-        
-        /*
-         * if less than 12 set to 12
-         * one lowercase, uppercase, one number, one special
-         * ~!@#$%^&*()_+
-         * 1) genpw nur strings anhand length
-         * 2) min 12 max 20
-         * 3) wenn unter 12 setz auf 12
-         * 4) min 1 lowercase
-         * 5) min 1 uppercase
-         * 6) min 1 number
-         * 7) min 1 special case nämlich folgende
-         */
     }
 
     public static char randomLetter() {
@@ -30,5 +22,61 @@ public class PasswordGenerator19 {
         char letter = (char) ((Math.random() * 93) + 33);
         return letter;
     }
+
+    public static char lowercaseRandomLetter() {
+        char[] lowercaseArray = "abcedfghijklmnopqrstuvwxyz".toCharArray();
+        int randomIndex = new Random().nextInt(lowercaseArray.length);
+        char lowercaseLetter = lowercaseArray[randomIndex];
+        return lowercaseLetter;
+    }
     
+    public static char uppercaseRandomLetter() {
+        char[] uppercaseArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        int randomIndex = new Random().nextInt(uppercaseArray.length);
+        char uppercaseLetter = uppercaseArray[randomIndex];
+        return uppercaseLetter;
+    }
+
+    public static char numberRandomLetter() {
+        char[] numberArray = "0123456789".toCharArray();
+        int randomIndex = new Random().nextInt(numberArray.length);
+        char number = numberArray[randomIndex];
+        return number;
+    }
+
+    public static char specialRandomLetter() {
+        char[] specialcharArray = "~!@#$%^&*()_+".toCharArray();
+        int randomIndex = new Random().nextInt(specialcharArray.length);
+        char special = specialcharArray[randomIndex];
+        return special;
+    }
+
+    public static String generateSuperPassword(int length) {
+        String password = "";
+
+        password = password + lowercaseRandomLetter();
+        password = password + uppercaseRandomLetter();
+        password = password + numberRandomLetter();
+        password = password + specialRandomLetter();
+        
+        for (int i = 5; i <= length; i++) {
+            password = password + randomLetter();
+        }
+
+        // convert password string into list, then shuffle
+        List<Character> charList = new ArrayList<>();
+        for (char c : password.toCharArray()) {
+            charList.add(c);
+        }
+        Collections.shuffle(charList);
+
+        // convert List Character to string
+        StringBuilder shuffledPassword = new StringBuilder();
+        for (char c : charList) {
+            shuffledPassword.append(c);
+        } 
+        String passwordResult = shuffledPassword.toString();
+
+        return passwordResult;
+    }
 }
